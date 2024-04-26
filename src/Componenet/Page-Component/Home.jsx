@@ -1,15 +1,30 @@
 import SliderBanner from '../Shared-Componenet/SliderBanner';
-import UseAuth from '../AuthComponent/UseAuth';
+import { useLoaderData } from 'react-router-dom';
+import HomePageTourismData from './HomePageTourismData';
 
 const Home = () => {
-    const {hello}=UseAuth()
+    const tourism=useLoaderData()
+
+
+
     return (
         <div>
             <SliderBanner/>
-            <h1>{hello}</h1>
+
+
+            <div className='my-16'>
+            <h1 className='text-center text-4xl my-8'>Ready to Discover Asia's Hidden Gems with <br/> WanderAsiaAdventure?</h1>
+            <div className='lg:grid grid-cols-2  '>
+            {
+                tourism.map((tours)=>( <HomePageTourismData tours={tours} key={tours._id} /> ))
+            }
+            </div>
+            </div>
             
         </div>
     );
 };
 
 export default Home;
+
+

@@ -8,7 +8,10 @@ const AuthProvider = ({children}) => {
     const [loading,setLoading]=useState(false)
     const [user,setUser]=useState(null)
     const userEmail=user?.email
-    console.log(userEmail);
+    const userImage=user?.photoURL
+    const userName=user?.displayName
+    
+    console.log(userEmail,userImage,userName);
 
     const googleProvider = new GoogleAuthProvider();
 
