@@ -43,13 +43,13 @@ const Singing = () => {
       <label className="label">
         <span className="label-text">Name</span>
       </label>
-      <input type="text" name='name' placeholder="email" className="input input-bordered" required />
+      <input type="text" name='name' placeholder="Name" className="input input-bordered" required />
     </div>
     <div className="form-control">
       <label className="label">
         <span className="label-text">Image URL</span>
       </label>
-      <input type="url" name='image' placeholder="email" className="input input-bordered" required />
+      <input type="url" name='image' placeholder="Image URL " className="input input-bordered" required />
     </div>
 </div>
 

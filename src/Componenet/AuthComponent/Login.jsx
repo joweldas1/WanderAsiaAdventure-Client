@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UseAuth from './UseAuth';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
   const {login}=UseAuth()
+
 
     const handleToLogin=e=>{
         e.preventDefault()
@@ -51,10 +53,14 @@ const Login = () => {
         <button type="submit" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button>
         </div>
       </form>
-      <div className='text-center'>
-<h1> Don't have an account ?Please <Link to='/singing' >SingIn</Link> </h1>
- </div>
-             </div>
+          <div className='text-center'>
+            <h1> Don't have an account ?Please <Link to='/singing' >SingIn</Link> </h1>
+    </div>
+
+          <div className='mx-auto mt-4'  >
+            <SocialLogin/>
+          </div>
+           </div>
             </div>
              
     

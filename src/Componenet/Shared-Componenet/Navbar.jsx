@@ -1,10 +1,22 @@
-import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import UseAuth from '../AuthComponent/UseAuth';
 
 const Navbar = () => {  
   const [hidden,setHidden]=useState(false)  
   const [showOnHover,setShowOnHover]=useState(false)
+  const {logOut,user}=UseAuth()
+
+  const userName=user?.displayName;
+  const img=user?.photoURL
+
+  const handleLogOut=()=>{
+    logOut()
+    .then(()=>{
+      alert('user logout')
+    })
+    .catch((error)=>console.log(error))
+  }
 
   let timeOut;
   const handleMouseEnter=()=>{
@@ -80,16 +92,16 @@ const Navbar = () => {
   <input  onChange={onChangeColor} type="checkbox" value="" className="toggle  theme-controller"/>
 <div className='relative z-30 text-white'>
   
-<img src="" alt="" 
+<img src={img} alt="" 
   onMouseEnter={handleMouseEnter}
   onMouseLeave={handleMouseLeave}
   className='h-10 w-10 bg-red-600 rounded-full' />
   {
     showOnHover  && (
-    <ul className='dropdown-content absolute left-0  right-4'>
+    <ul className='dropdown-content text-black absolute left-0  right-4'>
       
-      <li><a>Item 1</a></li>
-      <button>Logout</button>
+      <li><a> {userName} </a></li>
+      <button onClick={handleLogOut}><Link to='/login'>Logout</Link> </button>
     </ul>
 
     )
