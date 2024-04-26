@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomePageTourismData = ({ tours }) => {
-  console.log(tours);
   const {
+    _id,
     image,
     tourists_spot_name,
     country_Name,
@@ -23,11 +24,12 @@ const HomePageTourismData = ({ tours }) => {
   <div className="card bg-base-100 shadow-xl">
     <figure className="relative">
       <img src={image} alt="" className="w-full h-[350px] hover:scale-105 transition-transform duration-500 ease-in-out" />
-      <div className="absolute text-center inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-500">
+      <div className="absolute text-center inset-0 flex flex-col items-center justify-center px-2 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-500">
         <h3 className="text-4xl font-bold text-white">{tourists_spot_name}</h3>
         <h3 className="text-2xl font-medium my-2 text-white">{country_Name}</h3>
         <p className="text-lg text-white">{short_description}</p>
-        <button className="mt-2 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors duration-300">View Details</button>
+       <Link to={`tourism/${_id}`}> <button className="mt-2 px-4 py-2 bg-primary text-white rounded-md 
+        hover:bg-primary-dark transition-colors duration-300">View Details</button></Link>
       </div>
     </figure>
   </div>

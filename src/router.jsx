@@ -4,6 +4,7 @@ import ErrorPage from "./Componenet/Shared-Componenet/ErrorPage";
 import Home from "./Componenet/Page-Component/Home";
 import Login from "./Componenet/AuthComponent/Login";
 import Singing from "./Componenet/AuthComponent/Singing";
+import HomeTourismDetails from "./Componenet/Page-Component/HomeTourismDetails";
 
 const router=createBrowserRouter([
     {
@@ -15,6 +16,11 @@ const router=createBrowserRouter([
                 path:'/',
                 element: <Home/>  ,
                 loader:()=>fetch('http://localhost:5500/tourism')
+            },
+            {
+                path:'/tourism/:id',
+                element:<HomeTourismDetails/>,
+                loader:({params})=>fetch(`http://localhost:5500/tourism/${params.id}`)
             },
             {
                 path:'/login',
