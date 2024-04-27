@@ -1,66 +1,59 @@
-import React, { useState } from "react";
-import UseAuth from "../Componenet/AuthComponent/UseAuth";
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const AddTouristSpot = () => {
-  const { userName, userImage, userEmail ,loading} = UseAuth();
-  const [stopToRedirect,setStopRedirect]=useState(false)
+const UpdateUploadData = () => {
+    const userData=useLoaderData()
+    const handleToSubmitData = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const image = form.img.value;
+        const tourists_spot_name = form.tourists_spot_name.value;
+        const country_Name = form.country_Name.value;
+        const location = form.location.value;
+        const description = form.short_description.value;
+        const cost = form.averageCost.value;
+        const seasonality = form.seasonality.value;
+        const travel_time = form.travel_time.value;
+        const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
 
-  const handleToSubmitData = (e) => {
-    if(loading){
-      return <div><span className="loading loading-spinner loading-lg"></span>
-    </div>
+        const submitData = {
+            image,
+            tourists_spot_name,
+            country_Name,
+            location,
+            description,
+            cost,
+            seasonality,
+            travel_time,
+            totalVisitorsPerYear,
+          };
+          console.log(submitData);
+
+          fetch(`http://localhost:5500/update/${userData._id}`,{
+            method:"PUT",
+            headers:{'content-type':'application/json'},
+            body:JSON.stringify(submitData)
+          })
+          .then(res=>res.json())
+            .then(data=>{
+                if(data.modifiedCount>0){
+                    alert('data updateSuccefully')
+                }
+                console.log(data);
+            })
+
+
     }
-    setStopRedirect(true)
-    e.preventDefault();
-    const form = e.target;
-    const image = form.img.value;
-    const tourists_spot_name = form.tourists_spot_name.value;
-    const country_Name = form.country_Name.value;
-    const location = form.location.value;
-    const description = form.short_description.value;
-    const cost = form.averageCost.value;
-    const seasonality = form.seasonality.value;
-    const travel_time = form.travel_time.value;
-    const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
 
-    const submitData = {
-      userName,
-      userEmail,
-      userImage,
-      image,
-      tourists_spot_name,
-      country_Name,
-      location,
-      description,
-      cost,
-      seasonality,
-      travel_time,
-      totalVisitorsPerYear,
-    };
-    console.log(submitData);
 
-    fetch("http://localhost:5500/uploadData", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(submitData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if(data.insertedId){
-          alert('data added successfully')
-        }
-        console.log(data);
-      });
-      setStopRedirect(false)
-      
-  };
 
-  return (
-    <div>
-      <div className="mb-5">
-        <h1 className="text-3xl text-center my-8 font-semibold">
-          Please Add Tourist Spot where you visited
-        </h1>
+    console.log(userData);
+    return (
+        <div>
+            <h1>Dear {userData.userName} , Update your data </h1>
+
+            <div>
+            <div className="mb-5">
 
         <div className="mx-2">
           <div className=" mx-auto   border-2 font-medium border-black w-full lg:w-1/2">
@@ -74,7 +67,8 @@ const AddTouristSpot = () => {
                   name="img"
                   placeholder="image url"
                   className="input lg:mr-6 input-bordered"
-                  required
+                  defaultValue={userData.image}
+                  
                 />
               </div>
 
@@ -88,7 +82,7 @@ const AddTouristSpot = () => {
                     name="tourists_spot_name"
                     placeholder="tourists spot name"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.tourists_spot_name}
                   />
                 </div>
 
@@ -101,7 +95,8 @@ const AddTouristSpot = () => {
                     name="country_Name"
                     placeholder="Visited Country Name"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.country_Name}
+                    
                   />
                 </div>
               </div>
@@ -116,7 +111,8 @@ const AddTouristSpot = () => {
                     name="location"
                     placeholder="Location"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.location}
+                    
                   />
                 </div>
 
@@ -129,7 +125,8 @@ const AddTouristSpot = () => {
                     name="short_description"
                     placeholder="Short Description"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.short_description}
+                    
                   />
                 </div>
               </div>
@@ -140,11 +137,12 @@ const AddTouristSpot = () => {
                     <span className="label-text"> Average Cost</span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="averageCost"
                     placeholder="Average Cost"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.averageCost}
+                    
                   />
                 </div>
 
@@ -157,7 +155,8 @@ const AddTouristSpot = () => {
                     name="seasonality"
                     placeholder="seasonality"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.seasonality}
+                    
                   />
                 </div>
               </div>
@@ -172,7 +171,8 @@ const AddTouristSpot = () => {
                     name="travel_time"
                     placeholder="Travel Time"
                     className="input input-bordered"
-                    required
+                    defaultValue={userData.travel_time}
+                    
                   />
                 </div>
 
@@ -185,7 +185,8 @@ const AddTouristSpot = () => {
                     name="totalVisitorsPerYear"
                     placeholder="Total Visitor Per Year"
                     className="input input-bordered mt-3 lg:mt-0"
-                    required
+                    defaultValue={userData.totalVisitorsPerYear}
+                    
                   />
                 </div>
               </div>
@@ -197,8 +198,10 @@ const AddTouristSpot = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+            </div>
+            
+        </div>
+    );
 };
 
-export default AddTouristSpot;
+export default UpdateUploadData;

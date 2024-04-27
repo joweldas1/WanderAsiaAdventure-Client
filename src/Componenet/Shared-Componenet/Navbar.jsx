@@ -5,7 +5,7 @@ import UseAuth from '../AuthComponent/UseAuth';
 const Navbar = () => {  
   const [hidden,setHidden]=useState(false)  
   const [showOnHover,setShowOnHover]=useState(false)
-  const {logOut,user}=UseAuth()
+  const {logOut,user,loading}=UseAuth()
   const userEmail=user?.email||''
 
   const userName=user?.displayName;
@@ -41,7 +41,6 @@ const Navbar = () => {
 
 
     const handleOnView=()=>{
-      console.log('working');
       setHidden(true)
       setTimeout(()=>{
         setHidden(false)
@@ -90,7 +89,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end space-x-3">
 
-  <input  onChange={onChangeColor} type="checkbox" value="" className="toggle  theme-controller"/>
+  <input  onChange={onChangeColor} type="checkbox" value="" className="toggle hover:none  theme-controller"/>
 <div className='relative z-30 text-white'>
   
 <img src={img} alt="" 

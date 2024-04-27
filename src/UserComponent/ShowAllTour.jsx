@@ -17,8 +17,6 @@ const ShowAllTour = ({details}) => {
         seasonality,
         travel_time,
         totalVisitorsPerYear}=details
-    console.log(_id);
-    console.log(details);
 
 
 
@@ -31,7 +29,8 @@ const ShowAllTour = ({details}) => {
 
 
 
-    
+
+
     return (
         <div className='border-2 border-red-700 '>
 

@@ -10,6 +10,7 @@ import AllTouristSpot from "./UserComponent/AllTouristSpot";
 import ShowSingleTourCard from "./UserComponent/ShowSingleTourCard";
 import ProtecRoute from "./Componenet/AuthComponent/ProtecRoute";
 import MyTourUpload from "./UserComponent/MyTourUpload";
+import UpdateUploadData from "./UserComponent/UpdateUploadData";
 
 const router=createBrowserRouter([
     {
@@ -46,6 +47,11 @@ const router=createBrowserRouter([
                 path:'/myData/:email',
                 element:<ProtecRoute><MyTourUpload></MyTourUpload></ProtecRoute>,
                 loader:({params})=>fetch(`http://localhost:5500/myData/${params?.email}`)
+            },
+            {
+                path:'/update/:id',
+                element:<ProtecRoute><UpdateUploadData/></ProtecRoute>,
+                loader:({params})=>fetch(`http://localhost:5500/update/${params.id}`)
             },
             {
                 path:'/login',
