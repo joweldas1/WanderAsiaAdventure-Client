@@ -64,7 +64,7 @@ const AuthProvider = ({children}) => {
   
 
 
-    const authData={createUser,updateUser,login,loading,logOut,user,googleLogin}
+    const authData={createUser,updateUser,login,loading,logOut,user,googleLogin , userName ,userImage ,userEmail}
     return (
         <useAuth.Provider value={authData}>
             {children}

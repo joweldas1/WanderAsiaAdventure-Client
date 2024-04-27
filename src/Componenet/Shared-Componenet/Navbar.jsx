@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useFormAction } from 'react-router-dom';
 import UseAuth from '../AuthComponent/UseAuth';
 
 const Navbar = () => {  
   const [hidden,setHidden]=useState(false)  
   const [showOnHover,setShowOnHover]=useState(false)
   const {logOut,user}=UseAuth()
+  const userEmail=user?.email||''
 
   const userName=user?.displayName;
   const img=user?.photoURL
@@ -33,9 +34,9 @@ const Navbar = () => {
 
     const nav= <>
     <NavLink  to='/' className={({isActive})=>(isActive?'active':'noActive')} >  Home </NavLink>
-    <NavLink  to='/touristSpot' > All Tourists Spot </NavLink>
+    <NavLink  to='/uploadedData' > All Tourists Spot </NavLink>
     <NavLink  to='/addTouristSpot' > Add Tourist Spot </NavLink>
-    <NavLink  to='/myList' > My List </NavLink>
+    <NavLink  to={`/myData/${userEmail}`} > My List </NavLink>
     </>
 
 

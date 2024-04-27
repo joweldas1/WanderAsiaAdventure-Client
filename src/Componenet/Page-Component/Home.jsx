@@ -23,7 +23,7 @@ const Home = () => {
             </div>
 
             <div className=' mx-auto text-center  w-full'>
-            <button  onClick={()=>setShow(!show)} className='btn w-1/3  btn-warning'> {!show?'Show All':'Hide'}  </button>
+            <button  onClick={()=>setShow(!show)} className='btn w-1no/3  btn-warning'> {!show?'Show All':'Hide'}  </button>
             </div>
          
             </div>

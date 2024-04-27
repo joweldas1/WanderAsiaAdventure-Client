@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData,  } from 'react-router-dom';
 
 const HomeTourismDetails = () => {
     const data=useLoaderData()
     const {
-        _id,
         image,
         tourists_spot_name,
         country_Name,
