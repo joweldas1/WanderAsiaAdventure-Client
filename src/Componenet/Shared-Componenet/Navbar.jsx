@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useFormAction } from 'react-router-dom';
 import UseAuth from '../AuthComponent/UseAuth';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {  
   const [hidden,setHidden]=useState(false)  
@@ -12,11 +13,44 @@ const Navbar = () => {
   const img=user?.photoURL
 
   const handleLogOut=()=>{
-    logOut()
-    .then(()=>{
-      alert('user logout')
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+     
+        logOut()
+        .then(()=>{
+          Swal.fire({
+            title: "Logout!",
+            text: "Your are Logout.",
+            icon: "success"
+          });
+        })
+        .catch((error)=>console.log(error))
+
+      }
+      if(result.isDenied){
+        ''
+      }
     })
-    .catch((error)=>console.log(error))
+       
+
+
+
+
+
+
+
+
+
+
+  
   }
 
   let timeOut;

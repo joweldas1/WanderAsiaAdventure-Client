@@ -1,9 +1,11 @@
 import UseAuth from './UseAuth';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const ProtecRoute = ({children}) => {
     const {user,loading}=UseAuth()
+    const navigate=useNavigate()
     const location=useLocation()
+    console.log();
     const sharedPath=location.pathname
 
     if(loading){
@@ -11,9 +13,12 @@ const ProtecRoute = ({children}) => {
     }
 
     if(!user){
-        return <Navigate to='/login' state={sharedPath || '/'}></Navigate>
+        return  <Navigate to='/login' state={sharedPath}></Navigate>
     }
-    return children
+    if(user){
+
+        return children
+    }
 
        
 

@@ -32,10 +32,10 @@ const ShowAllTour = ({details}) => {
 
 
     return (
-        <div className='m-2 h-[40em]  '>
+        <div className='m-2 h-[35em]  '>
 
 
-            <div className='bg-[#FAF9F6] p-2  w-full mb-5 '>
+            <div className='bg-[#FAF9F6] p-2  w-full  '>
                 <div className='flex items-center gap-2 py-2'>
 
                     {
@@ -60,7 +60,7 @@ const ShowAllTour = ({details}) => {
                         <p className='text-[#000223] lg:text-md font-medium'>Country : {country_Name}</p>
                          <p className='text-[#000223] lg:text-md font-medium'>Location : {location}</p>
                     </div>
-                    <div  className='mt-2 text-[#000223]  pb-4'>
+                    <div  className='mt-2 text-[#000223]  pb-3'>
                         <p>{description.slice(0,199)} <span><Link to={`/tourSingleDetails/${_id}`}><span className='text-blue-500'>See more</span></Link></span> </p>
                         
                     </div>

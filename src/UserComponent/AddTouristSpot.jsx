@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import UseAuth from "../Componenet/AuthComponent/UseAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddTouristSpot = () => {
   const { userName, userImage, userEmail ,loading} = UseAuth();
-  const [stopToRedirect,setStopRedirect]=useState(false)
+  const navigate=useNavigate()
 
   const handleToSubmitData = (e) => {
     if(loading){
       return <div><span className="loading loading-spinner loading-lg"></span>
     </div>
     }
-    setStopRedirect(true)
     e.preventDefault();
     const form = e.target;
     const image = form.img.value;
@@ -39,6 +40,17 @@ const AddTouristSpot = () => {
     };
     console.log(submitData);
 
+    Swal.fire({
+      title: "Are you want to add?",
+      background:"#1C1678",
+      color:"#FCF6F5",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#00A36C",
+      cancelButtonColor:"E41717",
+      confirmButtonText: "Yes,Update"
+    }).then((result) => {
+      if (result.isConfirmed) {
     fetch("http://localhost:5500/uploadData", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -47,11 +59,23 @@ const AddTouristSpot = () => {
       .then((res) => res.json())
       .then((data) => {
         if(data.insertedId){
-          alert('data added successfully')
-        }
+          Swal.fire({
+            background:"#1C1678",
+            color:"#FCF6F5",
+            title: "Done!",
+            text: "Your data has been added .",
+            confirmButtonColor:"green",
+            iconColor:"wheat",
+            icon: "success"
+          });      navigate(-1)  }
         console.log(data);
       });
-      setStopRedirect(false)
+
+
+
+        
+      }
+    });
       
   };
 
@@ -74,7 +98,7 @@ const AddTouristSpot = () => {
                   name="img"
                   placeholder="image url"
                   className="input lg:mr-6 input-bordered"
-                  required
+                  // required
                 />
               </div>
 
@@ -88,7 +112,7 @@ const AddTouristSpot = () => {
                     name="tourists_spot_name"
                     placeholder="tourists spot name"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
 
@@ -101,7 +125,7 @@ const AddTouristSpot = () => {
                     name="country_Name"
                     placeholder="Visited Country Name"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
               </div>
@@ -116,7 +140,7 @@ const AddTouristSpot = () => {
                     name="location"
                     placeholder="Location"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
 
@@ -129,7 +153,7 @@ const AddTouristSpot = () => {
                     name="short_description"
                     placeholder="Short Description"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
               </div>
@@ -144,7 +168,7 @@ const AddTouristSpot = () => {
                     name="averageCost"
                     placeholder="Average Cost"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
 
@@ -157,7 +181,7 @@ const AddTouristSpot = () => {
                     name="seasonality"
                     placeholder="seasonality"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
               </div>
@@ -172,7 +196,7 @@ const AddTouristSpot = () => {
                     name="travel_time"
                     placeholder="Travel Time"
                     className="input input-bordered"
-                    required
+                    // required
                   />
                 </div>
 
@@ -185,13 +209,13 @@ const AddTouristSpot = () => {
                     name="totalVisitorsPerYear"
                     placeholder="Total Visitor Per Year"
                     className="input input-bordered mt-3 lg:mt-0"
-                    required
+                    // required
                   />
                 </div>
               </div>
 
               <div className="form-control lg:mr-12 mt-6">
-                <button className="btn btn-primary">Submit</button>
+                <button className="btn btn-primary bg-[#1C1678]">Submit</button>
               </div>
             </form>
           </div>

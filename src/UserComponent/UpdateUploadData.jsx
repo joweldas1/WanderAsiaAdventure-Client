@@ -1,7 +1,9 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import { Navigate, useLoaderData, useNavigate } from 'react-router-dom';
 
 const UpdateUploadData = () => {
+  const navigate=useNavigate()
     const userData=useLoaderData()
     const handleToSubmitData = (e) => {
         e.preventDefault();
@@ -29,18 +31,59 @@ const UpdateUploadData = () => {
           };
           console.log(submitData);
 
-          fetch(`http://localhost:5500/update/${userData._id}`,{
-            method:"PUT",
-            headers:{'content-type':'application/json'},
-            body:JSON.stringify(submitData)
-          })
-          .then(res=>res.json())
-            .then(data=>{
+          Swal.fire({
+            showDenyButton: true,
+            background:"#1C1678",
+            title: "Are you sure want to update",
+            text: "Click cancel to cancel update",
+            confirmButtonColor: "#00A36C",
+            cancelButtonColor:"E41717",
+            color:"wheat",
+            iconColor:"wheat",
+            icon: "question"
+          }).then((result)=>{
+            if(result.isConfirmed){
+              fetch(`http://localhost:5500/update/${userData._id}`,{
+                method:"PUT",
+                headers:{'content-type':'application/json'},
+                body:JSON.stringify(submitData)
+              })
+              .then(res=>res.json())
+              .then((data)=>{
                 if(data.modifiedCount>0){
-                    alert('data updateSuccefully')
-                }
-                console.log(data);
-            })
+                  console.log(data);
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    title: "Update in successfully",
+                    background:'#1C1678',
+                    color:"#FCF6F5",
+                    iconColor:"#FCF6F4"
+                  })
+                  console.log(navigate);
+                }                   navigate(-1)
+
+              })
+
+            }
+            else if(result.isDenied){
+              Swal.fire('Update cancel')
+            }
+          });
+
+         
+          
+         
 
 
     }
@@ -192,7 +235,8 @@ const UpdateUploadData = () => {
               </div>
 
               <div className="form-control lg:mr-12 mt-6">
-                <button className="btn btn-primary">Submit</button>
+              <button className="button-35 font-poppins hover:border-2 border border-red-300" role="button">Update</button>
+
               </div>
             </form>
           </div>

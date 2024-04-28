@@ -1,10 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import UseAuth from './UseAuth';
 import SocialLogin from './SocialLogin';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const {login}=UseAuth()
+  const location=useLocation()
+  console.log(location);
+  const navigate=useNavigate()
 
 
     const handleToLogin=e=>{
@@ -15,9 +20,15 @@ const Login = () => {
         console.log(email,password);
 
         login(email,password)
-        .then(result=>console.log(result.user))
+        .then(result=>{
+          if(result.user){
+            console.log(result.user);
+            
+            return navigate(location?.state||'/')
+          }
+        })
         .catch(error=>console.log(error))
-
+        
 
     }
 
