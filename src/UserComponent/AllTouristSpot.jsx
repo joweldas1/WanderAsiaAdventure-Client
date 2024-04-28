@@ -9,6 +9,7 @@ const AllTouristSpot = () => {
 
   //destruct country using spreading
   const allCountry = [...new Set(data.map((d) => d.country_Name))];
+  console.log(allCountry);
   //country wise data set
   const filteredData = selectCountry
     ? data.filter((d) => d.country_Name === selectCountry)
@@ -41,11 +42,17 @@ const AllTouristSpot = () => {
   };
 
   return (
-    <div className="bg-red-500">
+    <div className="">
         <div className="flex justify-between lg:justify-start gap-5 mx-1">
         <form className="max-w-sm ">
   
-  <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "value={selectCountry}  onChange={handleOnChange}>
+
+
+
+
+
+
+  <select id="countries"  className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "value={selectCountry}  onChange={handleOnChange}>
     <option className="text-xs" value="">All Country</option>
     {
            allCountry.map((f,idx)=>( <option className="text-xs" key={idx} value={f}>{f}</option>  )) 
@@ -65,7 +72,7 @@ const AllTouristSpot = () => {
         </div>
 
 
-      <div className="lg:grid grid-cols-3 w-full mt-10">
+      <div className="lg:grid grid-cols-3 w-full mt-1 ">
         {sorted.map((details, idx) => (
           <ShowAllTour details={details} key={idx} />
         ))}
@@ -76,45 +83,4 @@ const AllTouristSpot = () => {
 
 export default AllTouristSpot;
 
-/* import React, { useState, useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import ShowAllTour from './ShowAllTour';
 
-const AllTouristSpot = () => {
-    const [data, setData] = useState([]);
-    const allData = useLoaderData();
-    const [selectedCountry, setSelectedCountry] = useState('');
-
-    // Fetch data from the server
-    useEffect(() => {
-        setData(allData);
-    }, [allData]);
-
-    // Filter data based on selected country
-    const filteredData = selectedCountry ? data.filter(details => details.country === selectedCountry) : data;
-  
-    // Function to handle country selection
-    const handleCountryChange = (e) => {
-        setSelectedCountry(e.target.value);
-    };
-
-    return (
-        <div>
-            <div className="dropdown">
-                <select value={selectedCountry} onChange={handleCountryChange}>
-                    <option value="">All Countries</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="USA">USA</option>
-                </select>
-            </div>
-
-            <div className='lg:grid grid-cols-3 w-full mt-10'>
-                {filteredData.map((details, idx) => (
-                    <ShowAllTour details={details} key={idx} />
-                ))}
-            </div>
-        </div>
-    );
-};
-
-// export default AllTouristSpot */

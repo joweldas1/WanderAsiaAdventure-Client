@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import UseAuth from "../Componenet/AuthComponent/UseAuth";
 
 const MyTourUpload = () => {
-  const data = useLoaderData();
+  const data=useLoaderData()
+
+  const [currentData,setCurrentData]=useState(data)
+
+
+
   const {
     id,
     userName,
@@ -19,9 +25,24 @@ const MyTourUpload = () => {
     totalVisitorsPerYear,
   } = data;
 
+
+  const handleDelete=id=>{
+    fetch(`http://localhost:5500/delete/${id}`,{
+      method:"DELETE"
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.deletedCount>0){
+        const reaminging=currentData.filter(d=>d._id!==id)
+        setCurrentData(reaminging)
+      }
+      console.log(data);
+    })
+  }
+
   return (
     <div>
-      {data.map((d, idx) => (
+      {currentData?.map((d, idx) => (
         <div key={idx}>
           <div>
             <img src={d.image} alt="" />
@@ -32,6 +53,8 @@ const MyTourUpload = () => {
             </div>
           </div>
           <Link to={`/update/${d._id}`}><button>Update </button></Link>
+          <button onClick={()=>handleDelete(d._id)}>Delete</button>
+
         </div>
       ))}
     </div>

@@ -14,9 +14,10 @@ const Home = () => {
             <SliderBanner/>
 
 
-            <div className='my-16'>
-            <h1 className='text-center text-4xl my-8'>Ready to Discover Asia's Hidden Gems with <br/> WanderAsiaAdventure?</h1>
-            <div className='lg:grid grid-cols-2  '>
+            <div className='my-24 py-5 bg-[#FCFBF4 ] rounded-md customShadow'>
+            <h1 className='text-center text-[#000223]  text-2xl md:text-2xl lg:text-5xl font-medium px-5  my-6'>Ready to Discover Asia's Hidden Gems with  <span className='text-purple-950 font-bold  mt-3 leading-10'>
+            WanderAsiaAdventure</span>?</h1>
+            <div className='lg:grid grid-cols-2 px-4 '>
                 {
                     !show?  tourism.slice(0,6).map((tours)=>( <HomePageTourismData tours={tours} key={tours._id} /> )):tourism.map((tours)=>( <HomePageTourismData tours={tours} key={tours._id} /> ))
                 }

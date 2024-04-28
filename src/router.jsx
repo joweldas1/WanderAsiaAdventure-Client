@@ -42,13 +42,14 @@ const router=createBrowserRouter([
                 path:`/tourSingleDetails/:id`,
                 element:<ProtecRoute><ShowSingleTourCard/></ProtecRoute>,
                 loader:({params})=>fetch(`http://localhost:5500/tourSingleDetails/${params.id}`)
+
             },
             {
                 path:'/myData/:email',
                 element:<ProtecRoute><MyTourUpload></MyTourUpload></ProtecRoute>,
                 loader:({params})=>fetch(`http://localhost:5500/myData/${params?.email}`)
             },
-            {
+         {
                 path:'/update/:id',
                 element:<ProtecRoute><UpdateUploadData/></ProtecRoute>,
                 loader:({params})=>fetch(`http://localhost:5500/update/${params.id}`)

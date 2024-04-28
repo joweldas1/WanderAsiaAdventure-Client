@@ -23,11 +23,12 @@ const HomePageTourismData = ({ tours }) => {
 <div className="relative">
   <div className="card bg-base-100 shadow-xl">
     <figure className="relative">
-      <img src={image} alt="" className="w-full h-[350px] hover:scale-105 transition-transform duration-500 ease-in-out" />
-      <div className="absolute text-center inset-0 flex flex-col items-center justify-center px-2 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-500">
-        <h3 className="text-4xl font-bold text-white">{tourists_spot_name}</h3>
-        <h3 className="text-2xl font-medium my-2 text-white">{country_Name}</h3>
-        <p className="text-lg text-white">{short_description}</p>
+      <img src={image} alt="" className="w-full customShadow md:h-[350px] rounded-md hover:scale-105 transition-transform duration-500 ease-in-out" />
+
+      <div className="absolute  text-center inset-0 flex flex-col items-center justify-center px-8 bg-[#000223] bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-500">
+        <h3 className= "text-2xl lg:text-4xl font-medium lg:font-bold text-[#FCF6F5]">{country_Name}</h3>
+        <h3 className="text-xl lg:text-2xl font-medium my-2 text-white">{tourists_spot_name}</h3>
+        <p className="text-sm  lg:text-lg text-white">{short_description}</p>
        <Link to={`tourism/${_id}`}> <button className="mt-2 px-4 py-2 bg-primary text-white rounded-md 
         hover:bg-primary-dark transition-colors duration-300">View Details</button></Link>
       </div>
