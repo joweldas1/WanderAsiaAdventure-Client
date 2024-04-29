@@ -2,10 +2,18 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UseAuth from './UseAuth';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 
 const Singing = () => {
 const navigate=useNavigate()
+const validationStyle={
+  color:'red',
+  fontSize:'12px',
+  fontWeight:'600'
+  }
  const{createUser ,updateUser}= UseAuth()
+ const {  handleSubmit,formState: { errors },trigger,register,reset }=useForm ();  
+
 
 
     const handleToSingIn=e=>{
@@ -52,7 +60,7 @@ const navigate=useNavigate()
         <div className='w-full  '>
 
         <div className="card shrink-0 w-full  lg:w-2/3 mx-auto bg-red-500  shadow-none lg:shadow-2xl ">
-  <form onSubmit={handleToSingIn } className="card-body w-full  mx-auto flex justify-center items-center ">
+  <form onSubmit={ handleSubmit(handleToSingIn) } className="card-body w-full  mx-auto flex justify-center items-center ">
 
 <div className='lg:flex lg:space-x-5'>
 <div className="form-control">
@@ -74,14 +82,48 @@ const navigate=useNavigate()
       <label className="label">
         <span className="label-text">Email</span>
       </label>
-      <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+      <input type="email" name='email' placeholder="email" className="input input-bordered" required={true}
+      {...register("email", {
+        required: "Email is Required!!!" ,
+        pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i ,
+        message: "Invalid email address" 
+      
+        }})}
+        onKeyUp={() => {trigger("email")}} />
+        
+        {
+            errors.email && (
+            <p style={validationStyle     } >{errors.email.message}</p>
+          )}
     </div>
 
     <div className="form-control">
       <label className="label">
         <span className="label-text">Password</span>
       </label>
-      <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+      <input type="password" name='password' placeholder="password" className="input input-bordered" required
+       {...register("password", {
+        required: "You must specify a password",
+        pattern: {
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
+        message: "Password should contain at least one number and one    special character"
+        },
+       minLength: {
+       value: 8,
+       message: "Password must be more than 8 characters"
+       },
+       maxLength: {
+       value: 20,
+       message: "Password must be less than 20 characters"
+       },
+       })}
+       onKeyUp={() => {trigger("password")}}
+       error={Boolean(errors.password)}
+      />
+{
+            errors.password && <p style={validationStyle} >{errors.password.message}</p>
+          }
     </div>
  </div>
 

@@ -81,13 +81,13 @@ const AddTouristSpot = () => {
 
   return (
     <div>
-      <div className="mb-5">
+      <div className="mb-5 ">
         <h1 className="text-3xl text-center my-8 font-semibold">
           Please Add Tourist Spot where you visited
         </h1>
 
-        <div className="mx-2">
-          <div className=" mx-auto   border-2 font-medium border-black w-full lg:w-1/2">
+        <div className="mx-2 ">
+          <div className=" mx-auto   border-2 font-medium rounded-xl border-black w-full lg:w-1/2">
             <form className="card-body lg:ml-7" onSubmit={handleToSubmitData}>
               <div className="form-control  lg:mr-[20px]">
                 <label className="label hidden lg:block">

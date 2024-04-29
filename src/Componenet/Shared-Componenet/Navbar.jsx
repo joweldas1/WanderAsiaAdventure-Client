@@ -14,13 +14,16 @@ const Navbar = () => {
 
   const handleLogOut=()=>{
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Are you sure want to logout?",
       icon: "warning",
+      color:"wheat",
+      background:"#1C1678",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      cancelButtonText:'hello',
+      denyButtonText:'go back',
+      confirmButtonColor: "#00A36C",
+      cancelButtonColor: "#E41717",
+      confirmButtonText: "Yes,"
     }).then((result) => {
       if (result.isConfirmed) {
      
@@ -29,7 +32,10 @@ const Navbar = () => {
           Swal.fire({
             title: "Logout!",
             text: "Your are Logout.",
-            icon: "success"
+            icon: "success",
+            background:'#1C1678',
+            color:"#FCF6F5",
+            iconColor:"#FCF6F4"
           });
         })
         .catch((error)=>console.log(error))

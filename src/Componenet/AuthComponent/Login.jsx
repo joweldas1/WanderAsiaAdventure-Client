@@ -23,7 +23,6 @@ const Login = () => {
         .then(result=>{
           if(result.user){
             console.log(result.user);
-            
             return navigate(location?.state||'/')
           }
         })
