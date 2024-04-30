@@ -1,19 +1,17 @@
-
-#Wander Asia Adventure
+# Wander Asia Adventure
 
 Welcome to Wander Asia Adventure, your premier destination for unforgettable tours across Southeast Asia! Whether you're seeking the bustling streets of Bangkok, the serene beaches of Bali, or the ancient wonders of Angkor Wat, we've got you covered. Our website is built with cutting-edge technologies including React, Tailwind CSS, Node.js, Express, and MongoDB to ensure a seamless experience from browsing to booking.
 
 Live Link- https://helper-a9.web.app/
+![sample](https://i.ibb.co/d61CnWD/image.png)
 
 
-##Features
+## Features
 Explore: Browse through our extensive collection of tours covering diverse destinations and activities.
 Customize: Tailor your itinerary to your preferences with our flexible booking options.
 Book: Easily reserve your spot on the adventure of your dreams with our secure booking system.
 Discover: Learn about the rich cultural heritage, natural wonders, and hidden gems of Southeast Asia through our informative blog posts and travel guides.
 Connect: Stay updated with the latest news, promotions, and travel tips by subscribing to our newsletter.
-
-
 
 ## Installation
 
@@ -24,7 +22,7 @@ To built this website main we use React which is popular framework of JavaScript
 
 
 
-##Client Side Used
+## Client Side Used
 
 1-React Router
 
@@ -49,7 +47,7 @@ To built this website main we use React which is popular framework of JavaScript
 11-Lottifie 
 
 
-##Server side used
+## Server side used
 
 1-Node
 
@@ -59,14 +57,12 @@ To built this website main we use React which is popular framework of JavaScript
 
 4-Mongodb
 
-##Authenticaiion Used
+## Authenticaiion Used
 
 1 - Firebase
 
-##Deployment and Hosting used
+## Deployment and Hosting used
 
 1 - Github
 2 - Firebase Hosting
 3 - Vercel
-
-
