@@ -5,7 +5,7 @@ import auth from "../../firebase.config";
 export const useAuth=createContext(null)
 const AuthProvider = ({children}) => {
 
-    const [loading,setLoading]=useState(false)
+    const [loading,setLoading]=useState(true)
     const [user,setUser]=useState(null)
     const userEmail=user?.email
     const userImage=user?.photoURL
@@ -52,6 +52,7 @@ const AuthProvider = ({children}) => {
 
 
     useEffect(()=>{
+        setLoading(true)
         const stop = onAuthStateChanged(auth,(users)=>{
             setLoading(false)
             setUser(users)

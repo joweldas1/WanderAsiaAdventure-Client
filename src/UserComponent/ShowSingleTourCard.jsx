@@ -36,7 +36,6 @@ const ShowSingleTourCard = () => {
             <h4>Season : {seasonality}</h4>
             <h4>Travel Time : { travel_time}</h4>
             <h4>Travel Time : { totalVisitorsPerYear}</h4>
-            <h4>Publisher : { totalVisitorsPerYear}</h4>
             <div className='w-full '>
                 <h1 className='mt-5 underline   text-xl font-regular'>Published By</h1>
                 <div className='flex items-center gap-2 mt-2'>

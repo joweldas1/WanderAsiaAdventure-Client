@@ -9,16 +9,12 @@ const ProtecRoute = ({children}) => {
     const sharedPath=location.pathname
 
     if(loading){
-        return <span className="loading loading-spinner text-center mt-10 loading-lg"></span>
-    }
+        return <div className='w-full text-center'>  <span className="loading  loading-spinner text-center mt-10 loading-lg"></span> </div>}
 
     if(!user){
         return  <Navigate to='/login' state={sharedPath}></Navigate>
     }
-    if(user){
-
-        return children
-    }
+    return children
 
        
 

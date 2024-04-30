@@ -9,10 +9,10 @@ const AddTouristSpot = () => {
 
   const handleToSubmitData = (e) => {
     if(loading){
-      return <div><span className="loading loading-spinner loading-lg"></span>
+      return <div className="w-full  mx-auto text-center"><span className="loading loading-spinner text-center loading-lg"></span>
     </div>
     }
-    e.preventDefault();
+   e.preventDefault();
     const form = e.target;
     const image = form.img.value;
     const tourists_spot_name = form.tourists_spot_name.value;

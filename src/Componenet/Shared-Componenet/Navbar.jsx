@@ -3,12 +3,16 @@ import { Link, NavLink, useFormAction } from 'react-router-dom';
 import UseAuth from '../AuthComponent/UseAuth';
 import Swal from 'sweetalert2';
 import LottiAnimation from './LottiAnimation';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
+
 
 const Navbar = () => {  
   const [hidden,setHidden]=useState(false)  
   const [showOnHover,setShowOnHover]=useState(false)
   const {logOut,user,}=UseAuth()
   const userEmail=user?.email||'login'
+  
 
   const userName=user?.displayName;
   const img=user?.photoURL
@@ -20,7 +24,7 @@ const Navbar = () => {
       color:"wheat",
       background:"#1C1678",
       showCancelButton: true,
-      cancelButtonText:'Cancel',
+      cancelButtonText:'Cancel  ',
       denyButtonText:'go back',
       confirmButtonColor: "#00A36C",
       cancelButtonColor: "#E41717",
@@ -138,18 +142,26 @@ window.addEventListener("scroll",()=>{
 
   <input  onChange={onChangeColor} type="checkbox" value="" className="toggle hover:none  theme-controller"/>
 <div className='relative z-30 text-white'>
+
+
+<Tooltip id='logUser' place="top">
+{userName}
+</Tooltip>
   
 {
-  img?<img src={img} alt="" 
+  img?<img 
+ 
+  src={img} id='logUser' alt="" 
   onMouseEnter={handleMouseEnter}
   onMouseLeave={handleMouseLeave}
-  className='h-10 w-10 ring  rounded-full' />:''
-}
+  className='h-10 w-10 ring my-anchor-element rounded-full' />:''
+}    
+
   {
     showOnHover  && (
     <ul className='dropdown-content text-center text-[#FCF6F5] rounded-lg bg-[#1C1678] absolute  right-0 mt-4 w-44'>
       
-      <li className=''><a> {userName} </a></li>
+      <li className=''><a  > {userName} </a></li>
       <button className='border-2 border-[#1C1678] hover:border-[#FcF6F5] mt-2 py-2 w-full' onClick={handleLogOut}><Link to='/login'>Logout</Link> </button>
     </ul>
 
