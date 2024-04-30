@@ -4,7 +4,7 @@ const ThreeHomeCard = () => {
 const [data,setData]=useState()
 
 useEffect(()=>{
-    fetch("http://localhost:5500/threeData")
+    fetch("https://wander-asia-adventures-server.vercel.app/threeData")
     .then(res=>res.json())
     .then(result=>setData(result))
 },[])

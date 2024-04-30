@@ -25,7 +25,7 @@ const MyTourUpload = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5500/delete/${id}`, {
+        fetch(`https://wander-asia-adventures-server.vercel.app/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

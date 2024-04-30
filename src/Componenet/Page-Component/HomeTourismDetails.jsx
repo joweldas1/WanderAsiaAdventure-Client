@@ -21,7 +21,7 @@ const HomeTourismDetails = () => {
     // const {id}=useParams()
 
     // useEffect(()=>{
-    //     fetch(`http://localhost:5500/tourism/${id}`)
+    //     fetch(`https://wander-asia-adventures-server.vercel.app/tourism/${id}`)
     //     .then(res=>res.json())
     //     .then(data=>setData(data))
     // },[id])

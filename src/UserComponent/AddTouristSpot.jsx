@@ -51,7 +51,7 @@ const AddTouristSpot = () => {
       confirmButtonText: "Please,confirm to Add"
     }).then((result) => {
       if (result.isConfirmed) {
-    fetch("http://localhost:5500/uploadData", {
+    fetch("https://wander-asia-adventures-server.vercel.app/uploadData", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(submitData),

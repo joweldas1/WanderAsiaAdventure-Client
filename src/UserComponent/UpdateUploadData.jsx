@@ -43,7 +43,7 @@ const UpdateUploadData = () => {
             icon: "asked"
           }).then((result)=>{
             if(result.isConfirmed){
-              fetch(`http://localhost:5500/update/${userData._id}`,{
+              fetch(`https://wander-asia-adventures-server.vercel.app/update/${userData._id}`,{
                 method:"PUT",
                 headers:{'content-type':'application/json'},
                 body:JSON.stringify(submitData)

@@ -21,12 +21,12 @@ const router=createBrowserRouter([
             {
                 path:'/',
                 element: <Home/>  ,
-                loader:()=>fetch('http://localhost:5500/tourism')
+                loader:()=>fetch('https://wander-asia-adventures-server.vercel.app/tourism')
             },
             {
                 path:'/tourism/:id',
                 element:<HomeTourismDetails/>,
-                loader:({params})=>fetch(`http://localhost:5500/tourism/${params.id}`)
+                loader:({params})=>fetch(`https://wander-asia-adventures-server.vercel.app/tourism/${params.id}`)
             },
             {
                 path:'/addTouristSpot',
@@ -35,24 +35,24 @@ const router=createBrowserRouter([
             {
                 path:'/uploadedData',
                 element:<AllTouristSpot/>,
-                loader:()=>fetch('http://localhost:5500/uploadData')
+                loader:()=>fetch('https://wander-asia-adventures-server.vercel.app/uploadData')
 
             },
             {
                 path:`/tourSingleDetails/:id`,
                 element:<ProtecRoute><ShowSingleTourCard/></ProtecRoute>,
-                loader:({params})=>fetch(`http://localhost:5500/tourSingleDetails/${params.id}`)
+                loader:({params})=>fetch(`https://wander-asia-adventures-server.vercel.app/tourSingleDetails/${params.id}`)
 
             },
             {
                 path:'/myData/:email',
                 element:<ProtecRoute><MyTourUpload></MyTourUpload></ProtecRoute>,
-                loader:({params})=>fetch(`http://localhost:5500/myData/${params?.email}`)
+                loader:({params})=>fetch(`https://wander-asia-adventures-server.vercel.app/myData/${params?.email}`)
             },
          {
                 path:'/update/:id',
                 element:<ProtecRoute><UpdateUploadData/></ProtecRoute>,
-                loader:({params})=>fetch(`http://localhost:5500/update/${params.id}`)
+                loader:({params})=>fetch(`https://wander-asia-adventures-server.vercel.app/update/${params.id}`)
             },
             {
                 path:'/login',
