@@ -54,7 +54,7 @@ const SliderBanner = () => {
                         <div className='flex flex-col items-center justify-center h-full'>
                             <h1 className=' text-4xl mx-4 md:text-6xl lg:text-7xl  bg-300%  bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient font-semibold'
                             >{slide.title}</h1>
-                            <p className='animate__animated animate__backInRight animate__delay-1s text-xl lg:w-1/2 text-center my-6 text-white'>{slide.description}</p>
+                            <p className='animate__animated animate__backInRight animate__delay-1s text-xl lg:w-1/2 text-center my-6 text-white mx-2'>{slide.description}</p>
                             <div className='animate__animated animate__backInUp animate__delay-1s '>
                             <button onClick={handleToClick} className='btn  btn-info'>Contact</button>
                             </div>

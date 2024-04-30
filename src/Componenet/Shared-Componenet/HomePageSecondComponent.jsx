@@ -7,11 +7,16 @@ const HomePageSecondComponent = () => {
     const [text]=useTypewriter({
         words:['Choose Your Time','Choose Us','Start You Travel' ],
         loop:Infinity,
+        typeSpeed:150,
+        deleteSpeed:100,
+        delaySpeed:1700,
+        cursorBlinking:true,
     })
     const handleToView =()=>{
         window.scrollTo({
             top:document.body.scrollHeight,
-            behavior:"smooth"
+            behavior:"smooth",
+            
 
         })
     }
