@@ -16,17 +16,6 @@ const HomeTourismDetails = () => {
         totalVisitorsPerYear,
       } = data;
 
-    // const[data,setData]=useState()
-
-    // const {id}=useParams()
-
-    // useEffect(()=>{
-    //     fetch(`https://wander-asia-adventures-server.vercel.app/tourism/${id}`)
-    //     .then(res=>res.json())
-    //     .then(data=>setData(data))
-    // },[id])
-
-
 
     console.log(data);
     return (

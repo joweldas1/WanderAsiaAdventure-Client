@@ -5,7 +5,7 @@ import { Cursor, Typewriter, useTypewriter } from 'react-simple-typewriter';
 
 const HomePageSecondComponent = () => {
     const [text]=useTypewriter({
-        words:['Choose Your Time','Choose Us','Start You Travel'],
+        words:['Choose Your Time','Choose Us','Start You Travel' ],
         loop:Infinity,
     })
     const handleToView =()=>{
@@ -16,9 +16,10 @@ const HomePageSecondComponent = () => {
         })
     }
     
+
     return (
         <div>
-            <div className='bg-gradient-to-r from-[#1C1678] to-gray-900  bg-opacity-90 text-white font-poppins h-[50vh'>
+            <div className='shadowFour bg-gradient-to-r from-[#1C1678] to-gray-900  bg-opacity-90 text-white rounded-lg font-poppins h-[60vh'>
                 <div className='flex flex-col md:flex-row pt-3 md:pt-0 justify-around items-center'>
                         <div className='w-full mx-3 text-left' >
                             <h1 className= 'text-3xl mx-2 md:text-4xl font-semibold '>Your Adventure 

@@ -40,7 +40,7 @@ const Home = () => {
             <HomePageSecondComponent/>
 
 
-<div className='bgTwo h-[50vh] opacity-90    bg-purple-600 my-24 flex justify-end  
+<div className='bgTwo h-[70vh] opacity-90    bg-purple-600 my-24 flex justify-end  
 items-end md:items-center '  >
 
     <div className='bg-[#1C1678] h-2/4 md:h-auto py-3  text-white rounded-lg md:mr-5 bg-opacity-80    md:w-1/3 text-center md:py-10 '>

@@ -134,7 +134,7 @@ window.addEventListener("scroll",()=>{
   </div>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 space-x-14 font-poppins text-lg">
+    <ul className="menu menu-horizontal px-1 space-x-14 font-poppins text-sm">
     {nav}
     </ul>
   </div>
