@@ -32,7 +32,7 @@ const HomePageTourismData = ({ tours }) => {
     <figure className="relative" >
       <img src={image} alt="" className="w-full customShadow relative  md:h-[350px] delay-300 rounded-md hover:scale-105 transition-transform duration-500 ease-in-out inset-0 " />
 
-      {/* absolute items-center justify-center  bg-[#000223] bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity delay-200 ease-linear duration-500 */}
+
 
       <div id="hoverId" className=" p-4 w-full text-opacity-100 text-center lg:text-left px-8 bottom-[-1000px]  opacity-90   homeCard">
         <h3 className= "text-xl  md:text-2xl lg:text-4xl font-medium lg:font-bold text-[#FCF6F5]">{country_Name}</h3>
