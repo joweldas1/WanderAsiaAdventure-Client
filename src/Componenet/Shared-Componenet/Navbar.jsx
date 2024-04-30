@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useFormAction } from 'react-router-dom';
 import UseAuth from '../AuthComponent/UseAuth';
 import Swal from 'sweetalert2';
+import LottiAnimation from './LottiAnimation';
 
 const Navbar = () => {  
   const [hidden,setHidden]=useState(false)  
   const [showOnHover,setShowOnHover]=useState(false)
-  const {logOut,user,loading}=UseAuth()
+  const {logOut,user,}=UseAuth()
   const userEmail=user?.email||'login'
 
   const userName=user?.displayName;
@@ -19,7 +20,7 @@ const Navbar = () => {
       color:"wheat",
       background:"#1C1678",
       showCancelButton: true,
-      cancelButtonText:'hello',
+      cancelButtonText:'Cancel',
       denyButtonText:'go back',
       confirmButtonColor: "#00A36C",
       cancelButtonColor: "#E41717",
@@ -45,17 +46,6 @@ const Navbar = () => {
         ''
       }
     })
-       
-
-
-
-
-
-
-
-
-
-
   
   }
 
@@ -104,10 +94,22 @@ const Navbar = () => {
     },[theme])
 
 
+window.addEventListener("scroll",()=>{
+  const   nav=document.getElementById("navs");
+  if(window.scroll){
+    nav.classList.add("navhide")
+  }
+  if(window.scrollY>300){
+    nav.classList.remove("navhide")
+    nav.classList.add("navcss")
+
+  }else(nav.classList.remove("navcss","navhide"))
+} )
+
 
     return (
-        <div>
-            <div className="navbar text-[#FCF6F5]  font-medium bg-[#1C1678]">
+        <div className='max-w-7xl '>
+            <div id='navs' className="navbar mx-w-7xl rounded-xl text-[#FCF6F5] font-medium bg-[#1C1678]">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" onClick={handleOnView}  className="btn btn-ghost lg:hidden">
@@ -120,7 +122,12 @@ const Navbar = () => {
               </ul>:''
       }
     </div>
-    <button className='sm:text-sm lg:text-[25px] md:mr-12 font-poppins'>Wander Asia Adventure</button>
+  <div className=''>
+  <button className='sm:text-sm lg:text-[25px] font-poppins'>Wander Asia Adventure</button>
+    <div className=' absolute z-40 top-0 m-0 w-20 '>
+    <LottiAnimation></LottiAnimation>
+    </div>
+  </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 space-x-14 font-poppins text-lg">

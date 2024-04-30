@@ -1,10 +1,14 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import UseAuth from './UseAuth';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import { FaEye } from 'react-icons/fa';
+import { IoIosEyeOff } from 'react-icons/io';
 
 const Singing = () => {
+  const [show,setShow]=useState(true)
+  const [firebaseError,setFirebaseError]=useState(" ")
 const navigate=useNavigate()
 const validationStyle={
   color:'red',
@@ -12,18 +16,25 @@ const validationStyle={
   fontWeight:'600'
   }
  const{createUser ,updateUser}= UseAuth()
- const {  handleSubmit,formState: { errors },trigger,register,reset }=useForm ();  
+//  const {  handleSubmit,formState: { errors },trigger,register,reset }=useForm ();  
+const {
+  register,
+  handleSubmit,
+  watch,
+  trigger,
+  formState: { errors },
+} = useForm()
 
 
 
-    const handleToSingIn=e=>{
-      e.preventDefault()
-      const form=e.target;
-      const name=form.name.value;
-      const image=form.image.value
-      const email=form.email.value;
-      const password=form.password.value;
-      console.log(email,password,name,image);
+    const handleToSingIn=(data,errors)=>{
+      // const form=e.target;
+      // const name=form.name.value;
+      // const image=form.image.value
+      // const email=form.email.value;
+      // const password=form.password.value;
+      // console.log(email,password,name,image);
+      const {email,password,name,image} = data
 
       createUser(email,password)
       .then(result=>{
@@ -45,12 +56,16 @@ const validationStyle={
               icon: "success",
               title: "Signed in successfully"
             });
+           
            return navigate('/')
           })
-          .catch(error=>console.log(error))
         }
       } )
-      .catch(error=>console.log(error))
+      .catch(error=>{
+        if(error){
+          return setFirebaseError("Email already use,please try valid email")
+        }setFirebaseError("")
+      })
 
 
 
@@ -59,25 +74,34 @@ const validationStyle={
         <div className=''>
         <div className='w-full  '>
 
-        <div className="card shrink-0 w-full  lg:w-2/3 mx-auto bg-red-500  shadow-none lg:shadow-2xl ">
+        <div className="card shrink-0 w-full  lg:w-2/3 mx-auto bg-base-200 border border-black  shadow-none lg:shadow-2xl ">
   <form onSubmit={ handleSubmit(handleToSingIn) } className="card-body w-full  mx-auto flex justify-center items-center ">
 
 <div className='lg:flex lg:space-x-5'>
+
+
 <div className="form-control">
       <label className="label">
         <span className="label-text">Name</span>
       </label>
-      <input type="text" name='name' placeholder="Name" className="input input-bordered" required />
+      <input type="text" name='name' {...register ( 'name', { required:true }  )} placeholder="Name" className="input input-bordered"  />
     </div>
+
+
+
     <div className="form-control">
       <label className="label">
         <span className="label-text">Image URL</span>
       </label>
-      <input type="url" name='image' placeholder="Image URL " className="input input-bordered" required />
+      <input type="url" name='image' {...register('image')} placeholder="Image URL " className="input input-bordered" required />
     </div>
+
+
 </div>
 
  <div className='lg:flex lg:space-x-5'>
+
+
  <div className="form-control">
       <label className="label">
         <span className="label-text">Email</span>
@@ -90,19 +114,27 @@ const validationStyle={
         message: "Invalid email address" 
       
         }})}
-        onKeyUp={() => {trigger("email")}} />
+        onKeyUp={() => {
+          if(firebaseError){
+            setFirebaseError('')
+          }
+          trigger("email")}
+        } />
         
         {
-            errors.email && (
+          !firebaseError? errors.email && (
             <p style={validationStyle     } >{errors.email.message}</p>
-          )}
+          )
+          : <p style={validationStyle}> {firebaseError} </p>
+        }
     </div>
-
+{/* password field */}
     <div className="form-control">
       <label className="label">
         <span className="label-text">Password</span>
       </label>
-      <input type="password" name='password' placeholder="password" className="input input-bordered" required
+     <div className='flex items-center relative  '>
+     <input type={!show?"text":"password"} name='password' placeholder="password" className="input relative input-bordered" required
        {...register("password", {
         required: "You must specify a password",
         pattern: {
@@ -121,21 +153,29 @@ const validationStyle={
        onKeyUp={() => {trigger("password")}}
        error={Boolean(errors.password)}
       />
+      <div className='absolute right-0 mr-1' > 
+      <span onClick={()=>setShow(!show)}> {
+        !show? <FaEye></FaEye> : <IoIosEyeOff></IoIosEyeOff>
+      }</span>
+      </div>
+      
+     </div>
 {
-            errors.password && <p style={validationStyle} >{errors.password.message}</p>
+            errors.password && <p style={validationStyle} className='w-48' >{errors.password.message}</p>
           }
     </div>
  </div>
 
- <div>
-<h1>Already have an account ?Please <Link to='/login' >Login</Link> </h1>
- </div>
 
 
 
     <div className="form-control mt-6">
-    <button type="submit" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button>
+    <button type="submit" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">SignUp</button>
     </div>
+    
+ <div>
+<h1>Already have an account ?Please <Link to='/login' className='text-blue-600' >Login</Link> </h1>
+ </div>
   </form>
          </div>
         </div>

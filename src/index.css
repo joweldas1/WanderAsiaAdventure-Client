@@ -22,9 +22,44 @@
 .customShadow{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+[data-theme='dark'] {
+    --text-color: #fff; /* Text color for dark mode */
+    --background-color: #333; /* Background color for dark mode */
+  }
+
+  .navcss{
+    position: fixed;
+    top: 0;
+    z-index: 30;
+    max-width: 1280px;
+    transition: top 2s linear   ;
+    opacity: 95%;
+  }
 
 
+  .navhide{
+    top: -100px;
+    transition: top 2s linear  ;
+    
+  }
+.customShadow-2{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
 
+
+  .homeCard{
+    position: absolute;
+    background-color: #282313;
+    transition: bottom 1s linear;
+    
+    
+}
+
+.imgHover:hover .homeCard{
+    bottom:0px;
+    transition:bottom 2s linear ease-in;
+    
+}
 /* CSS */
 .button-35 {
   align-items: center;
@@ -69,7 +104,7 @@
     line-height: 1;
     margin: 0;
     outline: none;
-    padding: 0.9rem 1.5rem;
+    padding: 0.9rem 1.1rem;
     text-align: center;
     text-decoration: none;
     transition: box-shadow .2s,-webkit-box-shadow .2s;
@@ -78,4 +113,19 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+  }
+
+
+  .iconStyle{
+    color: white;
+    font-size: 25px;
+    margin-top: 10px;
+    display: flex;
+    gap:10px;   
+  }
+
+  .bgTwo{
+    background-image: url('../public/img/unnamed.png');
+    background-position: center;
+    width:auto;
   }

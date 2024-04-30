@@ -10,6 +10,12 @@ import { A11y, Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/module
 register()
 
 const SliderBanner = () => {
+  const handleToClick=()=>{
+    window.scrollTo({
+      top:document.body.scrollHeight,
+      behavior:"smooth"
+    })
+  }
 
     const customShadow={
         shadow:'rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px'
@@ -50,7 +56,7 @@ const SliderBanner = () => {
                             >{slide.title}</h1>
                             <p className='animate__animated animate__backInRight animate__delay-1s text-xl lg:w-1/2 text-center my-6 text-white'>{slide.description}</p>
                             <div className='animate__animated animate__backInUp animate__delay-1s '>
-                            <button className='btn  btn-info'>Contact</button>
+                            <button onClick={handleToClick} className='btn  btn-info'>Contact</button>
                             </div>
                             
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import UseAuth from './UseAuth';
@@ -7,8 +7,12 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
   const {login}=UseAuth()
+  const [showError,setShowError]=useState(" ")
+  const clearField=()=>{
+    setShowError("")
+  }
+  
   const location=useLocation()
-  console.log(location);
   const navigate=useNavigate()
 
 
@@ -17,17 +21,24 @@ const Login = () => {
         const form=e.target;
         const email=form.email.value;
         const password=form.password.value;
-        console.log(email,password);
 
         login(email,password)
         .then(result=>{
           if(result.user){
             console.log(result.user);
+            console.log(navigate);
             return navigate(location?.state||'/')
           }
         })
-        .catch(error=>console.log(error))
-        
+        .catch(error=>{
+          console.log(error);
+          if(error){
+            return setShowError("Email or password not match ")
+          }
+        })
+
+
+     
 
     }
 
@@ -35,7 +46,7 @@ const Login = () => {
         <div>
             <div className='w-full '>
 
-            <div className="card shrink-0 w-full  lg:w-1/3 mx-auto mt-24  lg:mt-16 shadow-none lg:shadow-2xl bg-base-100">
+            <div className="card shrink-0 w-full border border-[#1C1678] my-10 customShadow-2  lg:w-1/3 mx-auto mt-24  lg:mt-16 shadow-none lg:shadow-2xl bg-base-100">
       <form onSubmit={handleToLogin} className="card-body  mx-auto flex justify-center items-center ">
 
         <div className="form-control">
@@ -50,7 +61,14 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+          <input type="password" name='password' placeholder="password" className="input input-bordered" required onKeyUp={clearField} />
+
+          {
+            showError && <> <p className='text-sm text-red-600'>{showError}</p> </>||''
+          }
+
+
+
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>

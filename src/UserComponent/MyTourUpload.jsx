@@ -45,6 +45,7 @@ console.log(currentData);
     .then(data=>{
       if(data.deletedCount>0){
         const reaminging=currentData.filter(d=>d._id!==id)
+        console.log(remaining);
         setCurrentData(reaminging)
         Swal.fire({
           title: "Deleted!",

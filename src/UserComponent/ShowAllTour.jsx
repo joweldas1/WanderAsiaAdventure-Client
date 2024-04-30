@@ -20,22 +20,11 @@ const ShowAllTour = ({details}) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     return (
         <div className='m-2 h-[35em]  '>
 
 
-            <div className='bg-[#FAF9F6] p-2  w-full  '>
+            <div className='bg-[#FAF9F6] p-2 border border-purple-700 rounded-md     w-full  '>
                 <div className='flex items-center gap-2 py-2'>
 
                     {

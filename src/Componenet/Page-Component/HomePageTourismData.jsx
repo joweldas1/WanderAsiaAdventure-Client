@@ -15,22 +15,35 @@ const HomePageTourismData = ({ tours }) => {
     cost,
     totalVisitorsPerYear,
   } = tours;
+
+
+
+
+
   return (
     <div className="w-full  mx-auto p-3">
 
 
 
-<div className="relative">
-  <div className="card bg-base-100 shadow-xl">
-    <figure className="relative">
-      <img src={image} alt="" className="w-full customShadow md:h-[350px] rounded-md hover:scale-105 transition-transform duration-500 ease-in-out" />
 
-      <div className="absolute  text-center inset-0 flex flex-col items-center justify-center px-8 bg-[#000223] bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-500">
-        <h3 className= "text-2xl lg:text-4xl font-medium lg:font-bold text-[#FCF6F5]">{country_Name}</h3>
-        <h3 className="text-xl lg:text-2xl font-medium my-2 text-white">{tourists_spot_name}</h3>
-        <p className="text-sm  lg:text-lg text-white">{short_description}</p>
-       <Link to={`tourism/${_id}`}> <button className="mt-2 px-4 py-2 bg-primary text-white rounded-md 
-        hover:bg-primary-dark transition-colors duration-300">View Details</button></Link>
+
+<div className="relative">
+  <div className="card bg-base-100 shadow-xl imgHover">
+    <figure className="relative" >
+      <img src={image} alt="" className="w-full customShadow relative  md:h-[350px] delay-300 rounded-md hover:scale-105 transition-transform duration-500 ease-in-out inset-0 " />
+
+      {/* absolute items-center justify-center  bg-[#000223] bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity delay-200 ease-linear duration-500 */}
+
+      <div id="hoverId" className=" p-4 w-full text-opacity-100 text-center lg:text-left px-8 bottom-[-1000px]  opacity-90   homeCard">
+        <h3 className= "text-xl  md:text-2xl lg:text-4xl font-medium lg:font-bold text-[#FCF6F5]">{country_Name}</h3>
+        <h3 className=" text-sm lg:text-2xl font-medium py-1 text-white">{tourists_spot_name}</h3>
+        <p className="text-sm  lg:text-lg text-white font-regular">{short_description}</p>
+       <div className="flex justify-center md:justify-start gap-5">
+       <Link to={`tourism/${_id}`}> <button className="  mt-2 px-2 lg:px-4 py-1  md:py-2 text-sm md:text-lg  text-white rounded-md 
+        bg-[#1C1678] transition-colors duration-300">View Details</button></Link>
+        <button className="mt-2 px-2 lg:px-4 py-1  md:py-2 text-sm md:text-lg text-white rounded-md 
+        bg-[#D1B200] transition-colors duration-300">{cost}/-</button>
+       </div>
       </div>
     </figure>
   </div>

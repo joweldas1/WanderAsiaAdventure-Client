@@ -40,7 +40,7 @@ const UpdateUploadData = () => {
             cancelButtonColor:"E41717",
             color:"wheat",
             iconColor:"wheat",
-            icon: "question"
+            icon: "asked"
           }).then((result)=>{
             if(result.isConfirmed){
               fetch(`http://localhost:5500/update/${userData._id}`,{

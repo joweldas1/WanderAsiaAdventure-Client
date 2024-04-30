@@ -48,7 +48,7 @@ const AddTouristSpot = () => {
       showCancelButton: true,
       confirmButtonColor: "#00A36C",
       cancelButtonColor:"E41717",
-      confirmButtonText: "Yes,Update"
+      confirmButtonText: "Please,confirm to Add"
     }).then((result) => {
       if (result.isConfirmed) {
     fetch("http://localhost:5500/uploadData", {
@@ -65,6 +65,7 @@ const AddTouristSpot = () => {
             title: "Done!",
             text: "Your data has been added .",
             confirmButtonColor:"green",
+            confirmButtonText:"Post Done",
             iconColor:"wheat",
             icon: "success"
           });      navigate(-1)  }
@@ -112,7 +113,7 @@ const AddTouristSpot = () => {
                     name="tourists_spot_name"
                     placeholder="tourists spot name"
                     className="input input-bordered"
-                    // required
+                     required
                   />
                 </div>
 
@@ -125,7 +126,7 @@ const AddTouristSpot = () => {
                     name="country_Name"
                     placeholder="Visited Country Name"
                     className="input input-bordered"
-                    // required
+                    required
                   />
                 </div>
               </div>
@@ -140,7 +141,7 @@ const AddTouristSpot = () => {
                     name="location"
                     placeholder="Location"
                     className="input input-bordered"
-                    // required
+                    required
                   />
                 </div>
 
@@ -153,7 +154,7 @@ const AddTouristSpot = () => {
                     name="short_description"
                     placeholder="Short Description"
                     className="input input-bordered"
-                    // required
+                    required
                   />
                 </div>
               </div>
@@ -168,7 +169,7 @@ const AddTouristSpot = () => {
                     name="averageCost"
                     placeholder="Average Cost"
                     className="input input-bordered"
-                    // required
+                    required
                   />
                 </div>
 
@@ -181,7 +182,7 @@ const AddTouristSpot = () => {
                     name="seasonality"
                     placeholder="seasonality"
                     className="input input-bordered"
-                    // required
+                     required
                   />
                 </div>
               </div>
@@ -196,7 +197,7 @@ const AddTouristSpot = () => {
                     name="travel_time"
                     placeholder="Travel Time"
                     className="input input-bordered"
-                    // required
+                    required
                   />
                 </div>
 
@@ -209,13 +210,13 @@ const AddTouristSpot = () => {
                     name="totalVisitorsPerYear"
                     placeholder="Total Visitor Per Year"
                     className="input input-bordered mt-3 lg:mt-0"
-                    // required
+                     required
                   />
                 </div>
               </div>
 
               <div className="form-control lg:mr-12 mt-6">
-                <button className="btn btn-primary bg-[#1C1678]">Submit</button>
+                <button className="btn btn-primary bg-[#1C1678]">Click to Add</button>
               </div>
             </form>
           </div>
