@@ -133,4 +133,5 @@
     background-image: url('../public/img/unnamed.png');
     background-position: center;
     width:auto;
+    background-repeat: no-repeat;
   }
